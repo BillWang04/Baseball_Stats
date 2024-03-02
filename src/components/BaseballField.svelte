@@ -3,6 +3,100 @@
     import * as d3 from 'd3';
     import 'd3-transition';
     import * as d3selection from 'd3-selection';
+    import { onMount } from "svelte";
+
+    let csv_war_data2023;
+    let csv_war_data2022;
+    let selectedColumn = "All_P"; 
+
+    let update; // Declare the update function outside onMount
+    let y;
+    let x;
+    let margin;
+    let width;
+    let height;
+    let weird;
+    let show = 'hidden';
+    let current_zoomed = false;
+
+    async function fetchData(path) {
+        let csv_data = await d3.csv(path);
+        // console.log(csv_data)
+        return csv_data;
+    }
+
+    onMount(async () => {
+        csv_war_data2023 = await fetchData('data2023/cleanedTWBP2023.csv');
+        csv_war_data2022 = await fetchData('data2022/cleanedTWBP2022.csv');
+
+        margin = { top: 30, right: 10, bottom: 70, left: 150 },
+            width = 460 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
+
+        // append the svg object to the body of the page
+        weird = d3.select("#testing")
+            .append("svg")
+            .attr("width", 100)
+            .attr("height", 100)
+            .attr("viewBox","0 0 460 400")
+            .append("g")
+            .attr("transform","translate(" + margin.left + "," + margin.top + ")")
+
+
+        weird.append("text").attr("x", width/2).attr("y", -10).attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .text("Wins Above Replacement for a Given Year");
+
+  
+
+        // X axis
+        x = d3.scaleLinear()
+            .range([0, width])
+            .domain([-15, 15]);
+        weird.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+        weird.append('text').attr("transform", "translate(" + (width/2) + " ," + (height+40) + ")")
+        .style("text-anchor", "middle")
+        .text("Wins Above Replacement (Pitching and Batting)");
+
+        // Add Y axis
+        y = d3.scaleBand()
+            .domain(csv_war_data2023.map(function (d) { return d.Name; }))
+            .range([0, height])
+            .padding(0.2);
+        weird.append("g")
+            .attr("class", "myYaxis")
+            .call(d3.axisLeft(y));
+
+        weird.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", -(height/2))
+            .attr("y", -120)
+            .style("text-anchor", "middle")
+            .text("Teams");
+
+        // Initialize the plot with the first dataset
+        update(csv_war_data2022);
+    });
+
+    // Define the update function outside onMount
+    update = function (data) {
+    var u = weird.selectAll("rect")
+        .data(data);
+
+    u.enter().append("rect")
+        .merge(u)
+        .transition()
+        .duration(1000)
+        .attr("y", function (d) { return y(d.Name); })
+        .attr("x", function (d) { return x(-15); })
+        .attr("height", y.bandwidth())
+        .attr("width", function (d) { return width - x(d.All_P); })
+        .attr("fill", "#69b3a2");
+        
+    } 
 
   let svg;
   let positions;
@@ -10,16 +104,21 @@
 
   const zoom = d3.zoom()
     .scaleExtent([1, 40])
-    .on("zoom", zoomed);
+    .on("zoom", zoomed).filter((event, selection) => {
+    // Check if the event type is a mouse click event
+    return event.type === "mousedown" && !event.touches; // Zoom only on mouse click
+  });
+  
   
   function zoomed(event) {
     const {transform} = event;
-    d3.select(svg).attr("transform", transform);
-    console.log('zoomed')
+    d3.select(svg).attr("transform", transform);  
   }
 
 function zoomIn(event, item) {
+    event.preventDefault();
     event.stopPropagation();
+    current_zoomed = true;
     let x = parseInt(item.attr("x"));
     let y = parseInt(item.attr("y"))
     const svgWidth = svg.getBoundingClientRect().width;
@@ -29,13 +128,13 @@ function zoomIn(event, item) {
     const rectHeight = 100 * svgHeight/800; // Height of the rectangle
     const centerX = x * svgWidth/1040 + (rectWidth / 2);
     const centerY = y * svgHeight/800 + rectHeight / 2;
-    console.log(x,y)
+    // console.log(x,y)
 
     // Calculate the translation needed to center the rectangle
     const translateX = svgWidth / 2 - (centerX * svgWidth/650)
     const translateY = svgHeight / 2 - (centerY * svgWidth/650)
 
-    console.log(svgWidth,svgHeight)
+    // console.log(svgWidth,svgHeight)
     d3.select(svg).transition()
         .duration(1500)
         .call(zoom.transform,
@@ -45,26 +144,33 @@ function zoomIn(event, item) {
     }
 
     function reset() {
-    console.log("RESET")
+    show = 'hidden';
       d3.select(svg).transition().duration(1500).call(
         zoom.transform,
         d3.zoomIdentity,
         );
+    current_zoomed = false;
     }
+    let groups;
 
 
     $: {
-      d3.select(svg).call(zoom);
+      // d3.select(svg).call(zoom);
       positions = d3.select(svg).selectAll(".position");
       positions.on("click", (event) => {
+        if (!current_zoomed) {
         selectedPosition = d3.select(svg).select(`#${event.target.id}`)
-        zoomIn(event,selectedPosition)});
+        show = 'visible';
+        zoomIn(event,selectedPosition)
+        }});
+
     }
 
-    $: d3.select(svg).on('click',reset)
-    $: d3.select(svg).on('mouseover',(event) => {
-        console.log(event)
-    }) 
+    $: d3.select(svg).on('click',(event) => {
+      if (!d3.select(event.target).classed('position')) {
+      reset()}})
+    $: d3.select(svg).on('wheel.zoom',null) 
+    // $: console.log(current_zoomed)
 
 </script>
 
@@ -94,7 +200,13 @@ function zoomIn(event, item) {
         <path id="left-on-deck" d="M 235 457.5 A 12.5 12.5 0 1 1  210,457.5 A 12.5 12.5 0 1 1  235 457.5 z"/>
         <path id="right-on-deck" d="M 235 457.5 A 12.5 12.5 0 1 1  210,457.5 A 12.5 12.5 0 1 1  235 457.5 z" transform="translate(209.5,0.5)"/>
         <path id="home-dirt-border" d="M 295,405 C 295.15103,402.74278 293.1875,403.97917 292.28125,403.46875 C 280.62645,419.16193 280.35712,439.683 291.625,455.65625 C 305.77503,475.71519 333.59731,480.52502 353.65625,466.375 C 373.71519,452.22497 378.52502,424.40269 364.375,404.34375 L 361,405 C 362.65625,407.375 361,405 362.65625,407.375 L 293.875,406.53125 L 295,405 z M 293.875,406.53125 L 362.65625,407.375 C 374.80016,425.99135 370.24983,450.98832 351.9375,463.90625 C 333.20494,477.12061 307.30812,472.67006 294.09375,453.9375 C 283.82751,439.38417 283.83997,421.05606 293.875,406.53125 z "/>
-        <rect class="position" id="pos-first-base" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="394" y="265" />
+        <g id='group-pos-first-base' width="100" height="100"  x="394" y="265" >
+          <foreignObject id='group-pos-first-base-l' x="394" y="265" width="100" height="100" visibility={show}>
+            <div id="testing">
+            </div>
+          </foreignObject>
+          <rect class="position" id="pos-first-base" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="394" y="265"/>
+        </g>
         <rect class="position" id="pos-second-base" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="342" y="150" />
         <rect class="position" id="pos-short-stop" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="215" y="150" />
         <rect class="position" id="pos-third-base" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="164" y="265" />
@@ -109,6 +221,8 @@ function zoomIn(event, item) {
       </g>
     </svg>
 </div>
+
+
 
 <style>
     #pitchers-mound {
@@ -391,7 +505,8 @@ function zoomIn(event, item) {
     .field-container {
       display: flex;
       justify-content: center;
-      /* background-color: #00a831; */
+      background-color: #00a831;
+      /* height: 100em */
   
     }
 </style>
