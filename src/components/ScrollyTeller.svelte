@@ -3,36 +3,6 @@
     import App from "./App.svelte" 
     let count, index, offset, progress;
 
-    function playBall() {
-            const outputElement = document.getElementById('output_game');
-            outputElement.innerHTML = ''; // Clear previous output
-
-            // Simulate a baseball game
-            const innings = 9;
-            let homeScore = 0;
-            let awayScore = 0;
-
-            for (let inning = 1; inning <= innings; inning++) {
-                const homeRuns = Math.floor(Math.random() * 4);
-                const awayRuns = Math.floor(Math.random() * 4);
-
-                homeScore += homeRuns;
-                awayScore += awayRuns;
-
-                outputElement.innerHTML += `<p>Inning ${inning}: Home ${homeRuns} - ${awayRuns} Away</p>`;
-            }
-
-            outputElement.innerHTML += '<p><strong>Final Score:</strong></p>';
-            outputElement.innerHTML += `<p>Home: ${homeScore} - Away: ${awayScore}</p>`;
-
-            if (homeScore > awayScore) {
-                outputElement.innerHTML += '<p><strong>Home team wins!</strong></p>';
-            } else if (awayScore > homeScore) {
-                outputElement.innerHTML += '<p><strong>Away team wins!</strong></p>';
-            } else {
-                outputElement.innerHTML += '<p><strong>It\'s a tie!</strong></p>';
-            }
-        }
 </script>
 
 
@@ -85,7 +55,7 @@
         <path id="home-dirt-border" d="M 295,405 C 295.15103,402.74278 293.1875,403.97917 292.28125,403.46875 C 280.62645,419.16193 280.35712,439.683 291.625,455.65625 C 305.77503,475.71519 333.59731,480.52502 353.65625,466.375 C 373.71519,452.22497 378.52502,424.40269 364.375,404.34375 L 361,405 C 362.65625,407.375 361,405 362.65625,407.375 L 293.875,406.53125 L 295,405 z M 293.875,406.53125 L 362.65625,407.375 C 374.80016,425.99135 370.24983,450.98832 351.9375,463.90625 C 333.20494,477.12061 307.30812,472.67006 294.09375,453.9375 C 283.82751,439.38417 283.83997,421.05606 293.875,406.53125 z "/>
       </g>
     </svg>
-    
+
 
 
       <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -141,17 +111,55 @@
       <!-- <h1>Some type of Animation about the game point at the bases when scrolling</h1> -->
     </section>
 
-    <section>This is the third section.</section>
+    <section>
+        <h2>This is the third section.</h2>
+        
+
+    </section>
+
 
     <section>This is the fourth section.</section>
 
     <section>
+    <h1>This is the fifth section.</h1>
 
-      <h1>This is the fifth section.</h1>
+    <button onclick="playBall()">Play Ball!</button>
+    <div id="output_game"></div>
 
-      <button onclick="playBall()">Play Ball!</button>
+    <script>
+        function playBall() {
+            const outputElement = document.getElementById('output_game');
+            outputElement.innerHTML = ''; // Clear previous output
 
-      <div id="output_game"></div>
+            // Simulate a baseball game
+            const innings = 9;
+            let homeScore = 0;
+            let awayScore = 0;
+
+            for (let inning = 1; inning <= innings; inning++) {
+                const homeRuns = Math.floor(Math.random() * 4);
+                const awayRuns = Math.floor(Math.random() * 4);
+
+                homeScore += homeRuns;
+                awayScore += awayRuns;
+
+                outputElement.innerHTML += `Inning ${inning}: Home ${homeRuns} - ${awayRuns} Away<br>`;
+            }
+
+            outputElement.innerHTML += '<strong>Final Score:</strong><br>';
+            outputElement.innerHTML += `Home: ${homeScore} - Away: ${awayScore}<br>`;
+
+            if (homeScore > awayScore) {
+                outputElement.innerHTML += '<strong>Home team wins!</strong>';
+            } else if (awayScore > homeScore) {
+                outputElement.innerHTML += '<strong>Away team wins!</strong>';
+            } else {
+                outputElement.innerHTML += '<strong>It\'s a tie!</strong>';
+            }
+        }
+    </script>
+
+
 
     </section>
     <!-- Add More If needed -->
