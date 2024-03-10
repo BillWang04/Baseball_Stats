@@ -20,7 +20,7 @@
     bind:progress
     >
     <div class="background" slot="background" id = "background">
-      <div class ="offset">
+      <!-- <div class ="offset">
         <p>offset in current section</p>
         <progress value={offset || 0} />
       </div>
@@ -32,7 +32,7 @@
 
       <p>total progress</p>
       <progress value={progress || 0} />
-      </div>
+      </div> -->
 
       <Anime {index}/>
       <Back {index} {offset}/>

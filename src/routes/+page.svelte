@@ -15,4 +15,4 @@
 </main>
 
 
-<BaseballField/>
+<button id="" onclick="location.href='/test'">Explore For Yourself!</button>

@@ -38,6 +38,11 @@
         <span in:fade|global={{ delay: 1000 + i * 150, duration: 2000 }}>{char}</span>
         {/each}
     </div>
+    <div class = "names" out:fly={{ y: -20, duration: 800 }}>
+        {#each 'Made By: Bill Wang & Ethan Cao' as char, i}
+          <span in:fade|global={{ delay: 1000 + i * 30, duration: 2000 }}>{char}</span>
+          {/each}
+      </div>
     
     {/if}
 
@@ -135,6 +140,18 @@
         color: #000000;
         font-weight: 400; 
   }
+
+.names{
+    font-size: 1vw;
+    position: absolute;
+    right: 1%;
+    top: 95%;
+    /* transform: translate(-50%, -50%); */
+    font-family: 'Overpass';
+    letter-spacing: 0.12em;
+    color: #000000;
+    font-weight: 400; 
+}
 
 .second {
         font-size: 2vw;

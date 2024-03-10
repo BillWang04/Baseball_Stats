@@ -86,6 +86,9 @@ function zoomIn(event, item) {
 </script>
 
 <div class="field-container">
+  <div class="margin">
+  <button  onclick="location.href='../'">Return Home</button>
+  </div>
     <svg bind:this={svg} width="1040" height= "800"id="svg2" viewBox="0 0 650 500">
   
       <g id="layer1">
@@ -179,6 +182,8 @@ function zoomIn(event, item) {
   
       </g>
     </svg>
+    <div class="margin">
+    </div>
 </div>
 
 
@@ -473,5 +478,9 @@ function zoomIn(event, item) {
       background-color: #00a831;
       /* height: 100em */
   
+    }
+
+    .margin {
+      flex: 1
     }
 </style>
