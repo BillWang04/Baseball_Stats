@@ -119,10 +119,11 @@
         right: 18%;
         top: 30%;
         /* transform: translate(-50%, -50%); */
-        font-family: 'Overpass';
+        font-family: 'Permanent Marker';
         letter-spacing: 0.12em;
         color: #000000;
-        font-weight: 400;
+        font-weight: 600;
+        font-style:normal;
     }
 
 .first span {
@@ -135,10 +136,10 @@
         right: 10%;
         top: 50%;
         /* transform: translate(-50%, -50%); */
-        font-family: 'Overpass';
+        font-family: 'Permanent Marker';
         letter-spacing: 0.12em;
         color: #000000;
-        font-weight: 400; 
+        font-weight: 600; 
   }
 
 .names{
