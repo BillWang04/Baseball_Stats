@@ -116,6 +116,8 @@
             .transition()
             .call(d3.axisLeft(y));
 
+            d3.select("#my_dataviz").select("div").remove()
+
             var tooltip = d3.select("#my_dataviz")
                 .append("div")
                 .style("opacity", 0)
@@ -162,7 +164,7 @@
             .attr("transform", function (d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
             .attr("width", function (d) { return x(d.x1) - x(d.x0) - 1; })
             .attr("height", function (d) { return height - y(d.length); })
-            .style("fill", "#69b3a2")
+            .style("fill", "#12365c")
             .on("mouseover", showTooltip )
             .on("mousemove", moveTooltip )
             .on("mouseleave", hideTooltip );

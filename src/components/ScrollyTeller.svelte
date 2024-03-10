@@ -40,29 +40,20 @@
       
       <SideBar {index}/>
 
-      <section>1</section>
-      <section>2</section>
-      <section>3</section>
-      <section>4</section>
-      <section>5</section>
-      <section>6</section>
-      <section>7 Batting Interactions
+      <section/>
+      <section/>
+      <section/>
+      <section/>
+      <section/>
+      <section/>
+      <section/>
+      <section/>
+      <section/>
+      <section/>
 
-      </section>
-      <section>8  Btting Stats</section>
-      <section>9 Pitching 
-    
-
-
-      </section>
-      <section>10 Pitching stats</section>    
-
-      <section>11
-        <h1> Bandwagoner </h1>
-      </section>
+      <section/>
       <section>
 
-      <h1>12</h1>
 
       <button onclick="playBall()">Play Ball!</button>
       <div id="output_game"></div>
@@ -126,21 +117,21 @@
     margin: 0 auto;
     height: auto;
     position: relative;
-    outline: red solid 3px;
+    /* outline: red solid 3px; */
     }
 
     .progress-bars {
     position: absolute;
     background: rgba(170, 51, 120, 0.2) /*  40% opaque */;
-    visibility: visible;
+    visibility: hidden;
     }
 
     section {
     height: 200vh;
-    background-color: rgba(0, 0, 0, 0.2);
+    /* background-color: rgba(0, 0, 0, 0.2); */
     /* 20% opaque */
     /* color: white;*/
-    outline: magenta solid 3px;
+    /* outline: magenta solid 3px; */
     text-align: center;
     max-width: 1000px;
     /* adjust at will */
@@ -168,7 +159,7 @@
     position: fixed;
     z-index: 1;
     top: 0;
-    background-color: #016f28;
+    background-color: #A9A9A9;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 30px;
@@ -181,7 +172,7 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #222020;
+      color: #222020;
     display: block;
     transition: 0.3s;
 

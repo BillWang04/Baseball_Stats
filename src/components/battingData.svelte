@@ -57,7 +57,7 @@
         updateHistogram(selectedColumn);
     });
 
-    updateHistogram = function (selectedColumn) {
+    updateHistogram = function (selectedColumn, firstTime) {
         // Find the minimum and maximum values of the selected column
         const extentValues = d3.extent(csv_batting_data, d => {
         // Convert the string to a float, if it's a string
@@ -88,6 +88,9 @@
         svg.select(".y-axis")
             .transition()
             .call(d3.axisLeft(y));
+
+            
+            d3.select("#my_dataviz").select("div").remove()
 
             var tooltip = d3.select("#my_dataviz")
                 .append("div")
@@ -135,7 +138,7 @@
             .attr("transform", function (d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
             .attr("width", function (d) { return x(d.x1) - x(d.x0) - 1; })
             .attr("height", function (d) { return height - y(d.length); })
-            .style("fill", "#69b3a2")
+            .style("fill", "#12365c")
             .on("mouseover", showTooltip )
             .on("mousemove", moveTooltip )
             .on("mouseleave", hideTooltip );

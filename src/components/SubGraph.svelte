@@ -4,7 +4,6 @@
 
     export let position;
 
-    console.log(position);
     let csv_war_data2023;
     let csv_war_data2022;
     let selectedColumn = "All_P"; 
@@ -15,9 +14,7 @@
     let margin;
     let width;
     let height;
-    let weird;
-    let show = 'hidden';    
-    let current_zoomed = false;
+    let graphDiv;
 
 
     async function fetchData(path) {
@@ -35,7 +32,7 @@
             height = 400 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
-        weird = d3.select("#"+position + "-graph")
+        graphDiv = d3.select("#"+position + "-graph")
             .append("svg")
             .attr("width", 100)
             .attr("height", 100)
@@ -44,7 +41,7 @@
             .attr("transform","translate(" + margin.left + "," + margin.top + ")")
 
 
-        weird.append("text").attr("x", width/2).attr("y", -10).attr("text-anchor", "middle")
+        graphDiv.append("text").attr("x", width/2).attr("y", -10).attr("text-anchor", "middle")
         .style("font-size", "16px")
         .text("Wins Above Replacement for a Given Year");
 
@@ -54,11 +51,11 @@
         x = d3.scaleLinear()
             .range([0, width])
             .domain([-15, 15]);
-        weird.append("g")
+        graphDiv.append("g")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x));
 
-        weird.append('text').attr("transform", "translate(" + (width/2) + " ," + (height+40) + ")")
+        graphDiv.append('text').attr("transform", "translate(" + (width/2) + " ," + (height+40) + ")")
         .style("text-anchor", "middle")
         .text("Wins Above Replacement (Pitching and Batting)");
 
@@ -67,11 +64,11 @@
             .domain(csv_war_data2023.map(function (d) { return d.Name; }))
             .range([0, height])
             .padding(0.2);
-        weird.append("g")
+        graphDiv.append("g")
             .attr("class", "myYaxis")
             .call(d3.axisLeft(y));
 
-        weird.append("text")
+        graphDiv.append("text")
             .attr("transform", "rotate(-90)")
             .attr("x", -(height/2))
             .attr("y", -120)
@@ -84,7 +81,7 @@
 
     // Define the update function outside onMount
     update = function (data) {
-    var u = weird.selectAll("rect")
+    var u = graphDiv.selectAll("rect")
         .data(data);
 
     u.enter().append("rect")

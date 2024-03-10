@@ -265,7 +265,7 @@
     position: fixed;
     z-index: 1;
     top: 0;
-    background-color: #016f28;
+    background-color: #A9A9A9;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 30px;

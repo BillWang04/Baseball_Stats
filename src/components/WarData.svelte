@@ -4,8 +4,6 @@
 
     let csv_war_data2023;
     let csv_war_data2022;
-    let csv_batting_data;
-    let csv_pitching_data;
     let selectedColumn = "All_P"; 
 
     let update; // Declare the update function outside onMount
@@ -93,7 +91,7 @@
         .attr("x", function (d) { return x(-15); })
         .attr("height", y.bandwidth())
         .attr("width", function (d) { return width - x(d[selectedColumn]); }) // Use d[selectedColumn] instead of d.All_P
-        .attr("fill", "#69b3a2");
+        .attr("fill", "#12365c");
     }
 </script>
 
