@@ -107,13 +107,13 @@
 
         {#if index === 6}
           {#if offset <= 0.1}
-            <circle cx="327.5" cy="429" r="15" fill="blue" in:fly={{ y: -20, duration: 500 }} out:fly={{ y: -20, duration: 800 }}/>
+            <circle cx="327.5" cy="429" r="15" fill="blue" />
             <circle cx="275" cy="449" r="15" fill="blue"/>
             <circle cx="225" cy="469" r="15" fill="blue"/>
           {/if}
 
           {#if offset >= 0.1 && offset < .2}
-            <circle cx="327.5" cy="429" r="15" fill="red" in:fly={{ y: -20, duration: 500 }} out:fly={{ y: -20, duration: 800 }}/>
+            <circle cx="327.5" cy="429" r="15" fill="red" />
             <circle cx="275" cy="449" r="15" fill="blue"/>
             <circle cx="225" cy="469" r="15" fill="blue"/>
  
@@ -157,7 +157,11 @@
 
         {/if}
 
-        {#if index === 8}
+        {#if index === 7}
+        <circle cx="327.5" cy="429" r="15" fill="blue" in:fly={{ y: 600, duration: 500 }} out:fly={{ y: -20, duration: 800 }}/>
+        {/if}
+
+        {#if index === 8 || index === 9}
         <circle cx="328" cy="320" r="15" fill="blue" in:fly={{ y: 600, duration: 500 }} out:fly={{ y: -20, duration: 800 }}/>
         {/if}
 

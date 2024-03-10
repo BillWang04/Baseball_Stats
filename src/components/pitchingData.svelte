@@ -5,7 +5,7 @@
 
     let csv_pitching_data;
     let selectedColumn = "release_speed"; 
-    let type_pitch = "Changeup"
+    let pitch_type = "All"
 
     let updateHistogram;
     let svg;
@@ -14,6 +14,21 @@
     let margin;
     let width;
     let height;
+
+    const pitchTypes = [
+    { value: "All", label: "All" },
+    { value: "SV", label: "Sinker/Slider" },
+    { value: "ST", label: "Strike" },
+    { value: "SL", label: "Slider" },
+    { value: "SI", label: "Sinker" },
+    { value: "KC", label: "Knuckle Curve" },
+    { value: "FS", label: "Splitter" },
+    { value: "FF", label: "Four-seam Fastball" },
+    { value: "FC", label: "Cutter" },
+    { value: "CU", label: "Curveball" },
+    { value: "CH", label: "Changeup" }
+  ];
+
 
     async function fetchData(path) {
         let csv_data = await d3.csv(path);
@@ -55,19 +70,25 @@
             .attr("dy", "-4em");
 
         // Initial rendering of the histogram
-        updateHistogram(csv_pitching_data,selectedColumn);
+        updateHistogram(csv_pitching_data,selectedColumn, pitch_type);
     });
 
-    updateHistogram = function (data,selectedColumn) {
-        
-        const filteredData = csv_pitching_data //.filter(d => d.api_pitch_type === type_pitch);
-        console.log(csv_pitching_data[0]);
+    updateHistogram = function (data,selectedColumn,type_pitch) {
+        let filteredData;
+        if (type_pitch === "All") {
+            // If "All" is selected, use all the data without filtering
+            filteredData = data;
+        } else {
+            // Otherwise, filter the data based on the selected pitch type
+            filteredData = data.filter(d => d.api_pitch_type === type_pitch);
+        }
 
         // Find the minimum and maximum values of the selected column
         const extentValues = d3.extent(filteredData, d => {
         // Convert the string to a float, if it's a string
         return typeof d[selectedColumn] === 'string' ? parseFloat(d[selectedColumn]) : d[selectedColumn];
     });        
+    
         const minValue = extentValues[0];
         const maxValue = extentValues[1];
         console.log(minValue, maxValue)
@@ -152,29 +173,32 @@
 
 <main>
     <div id="my_dataviz"></div>
+    <div>
+        <label for="column-select">Select Column:</label>
+        <select id="column-select" bind:value={selectedColumn}>
+        <option value="n_pitches">Number of Pitches</option>
+        <option value="release_speed">Release Speed</option>
+        <option value="spin_rate">Spin Rate</option>
+        <option value="movement_inches">Movement Inches</option>
+        <option value="alan_active_spin_pct">Alan Active Spin Percentage</option>
+        <option value="active_spin">Active Spin</option>
+        </select>
 
-    <label for="column-select">Select Column:</label>
-<select id="column-select" bind:value={selectedColumn}>
-  <option value="n_pitches">Number of Pitches</option>
-  <option value="release_speed">Release Speed</option>
-  <option value="spin_rate">Spin Rate</option>
-  <option value="movement_inches">Movement Inches</option>
-  <option value="alan_active_spin_pct">Alan Active Spin Percentage</option>
-  <option value="active_spin">Active Spin</option>
-  <!-- <option value="bb_percent">Walk Percentage (BB%)</option>
-  <option value="woba">Weighted On-Base Average (wOBA)</option>
-  <option value="xwoba">Expected Weighted On-Base Average (xwOBA)</option>
-  <option value="sweet_spot_percent">Sweet Spot Percentage</option>
-  <option value="barrel_batted_rate">Barrel Batted Rate</option>
-  <option value="hard_hit_percent">Hard Hit Percentage</option>
-  <option value="avg_best_speed">Average Best Speed</option>
-  <option value="avg_hyper_speed">Average Hyper Speed</option>
-  <option value="whiff_percent">Whiff Percentage</option>
-  <option value="swing_percent">Swing Percentage</option> -->
-  <!-- Add more options for other columns -->
-</select>
+    </div>
 
-    <button on:click={() => updateHistogram(csv_pitching_data,selectedColumn)}>Click to Update</button>
+
+    <div>
+        <label for="pitch-type">Select Pitch Type:</label>
+        <select id="pitch-type" bind:value={pitch_type}>
+          {#each pitchTypes as { value, label }}
+            <option value={value}>{label}</option>
+          {/each}
+        </select>
+
+    </div>
+
+
+    <button on:click={() => updateHistogram(csv_pitching_data,selectedColumn,pitch_type)}>Click to Update</button>
    
 
 </main>

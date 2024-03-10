@@ -168,7 +168,7 @@
         {/if}
 
         {#if index === 7}
-          <h1>Batter Stats</h1>
+          <h3>Distribuition of Batter Stats by Top Players from 2020 - 2023</h3>
           <BattingData/>
         {/if}
 
@@ -176,31 +176,58 @@
         <div class = 'sidenav_text'>
             <h1>Pitching</h1>
             <p>
-                <strong>Fastball:</strong> A high-speed pitch that typically travels in a straight line.
+              <strong>SV (Sinker/Slider):</strong> A pitch that can behave as either a sinker or a slider. A sinker tends to move downward and may induce ground balls, while a slider has a lateral break.
             </p>
+          
             <p>
-                <strong>Curveball:</strong> A slower pitch with a noticeable curve or break.
+              <strong>ST (Strike):</strong> A pitch thrown within the strike zone, aiming to be called a strike by the umpire.
             </p>
+          
             <p>
-                <strong>Slider:</strong> Similar to a curveball but with a sharper and smaller break.
+              <strong>SL (Slider):</strong> A pitch with a lateral break, often sharper and smaller than a curveball. It can deceive batters with its movement.
             </p>
+          
             <p>
-                <strong>Changeup:</strong> A slower pitch designed to deceive the batter with a change in speed.
+              <strong>SI (Sinker):</strong> A pitch that tends to move downward, inducing ground balls. It has a sinking action, making it challenging for batters.
             </p>
+          
             <p>
-                <strong>Knuckleball:</strong> An unpredictable and slow pitch that moves erratically due to minimal spin.
+              <strong>KC (Knuckle Curve):</strong> A breaking ball with a noticeable curve or break. The "knuckle" in the name suggests a grip similar to a knuckleball, but with a curveball's spin.
             </p>
+          
+            <p>
+              <strong>FS (Splitter):</strong> A pitch with downward movement, similar to a forkball or split-finger fastball. It can deceive batters with its change in speed and movement.
+            </p>
+          
+            <p>
+              <strong>FF (Four-seam Fastball):</strong> A high-speed pitch that typically travels in a straight line. The four seams on the ball provide less air resistance, allowing for maximum velocity.
+            </p>
+          
+            <p>
+              <strong>FC (Cutter):</strong> A fastball with lateral movement, often described as a "cutting" action. It can be challenging for batters to predict due to its late break.
+            </p>
+          
+            <p>
+              <strong>CU (Curveball):</strong> A slower pitch with a noticeable curve or break. It can be used to deceive batters with its change of trajectory.
+            </p>
+          
+            <p>
+              <strong>CH (Changeup):</strong> A slower pitch designed to deceive the batter with a change in speed. It mimics the arm action of a fastball but with reduced velocity.
+            </p> 
 
             <p>The pitcher aims to throw pitches in the strike zone - the area over home plate between the batter's knees and mid-chest. If the batter doesn't swing at a pitch in the strike zone, it's called a strike. With three strikes, the batter is out</p>
+            <p>a</p>
+            <p>a</p>
+
         </div>
         
         {/if}
 
         {#if index === 9}
           <div>
-            <h1>
-              Pitcher Stats
-            </h1>
+            <h3>
+              Distribution of Pitcher Stats Grouped by Pitch Type from 2020 - 2023
+            </h3>
           </div>
           <PitchingData/>
         {/if}
