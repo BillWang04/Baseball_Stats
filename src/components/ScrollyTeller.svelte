@@ -20,13 +20,15 @@
     bind:progress
     >
     <div class="background" slot="background" id = "background">
+      <div class ="offset">
+        <p>offset in current section</p>
+        <progress value={offset || 0} />
+      </div>
+
 
       <div class="progress-bars">
       <p>current section: <strong>{index + 1}/{count}</strong></p>
       <progress value={count ? (index + 1) / count : 0} />
-
-      <p>offset in current section</p>
-      <progress value={offset || 0} />
 
       <p>total progress</p>
       <progress value={progress || 0} />

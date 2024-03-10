@@ -100,7 +100,9 @@
     <!-- Create a div where the graph will take place -->
     <div id="warBaseball" ></div>
 
-   
+    <button on:click={() => update(csv_war_data2022, selectedColumn)}>2022</button>
+    <button on:click={() => update(csv_war_data2023, selectedColumn)}>2023</button>
+    
     <div>
         <label for="column-select">Select Column and Click Year:</label>
         <select id="column-select" bind:value={selectedColumn}>
