@@ -4,6 +4,8 @@
 
     let csv_war_data2023;
     let csv_war_data2022;
+    let csv_batting_data;
+    let csv_pitching_data;
     let selectedColumn = "All_P"; 
 
     let update; // Declare the update function outside onMount
@@ -16,17 +18,20 @@
 
     async function fetchData(path) {
         let csv_data = await d3.csv(path);
-        console.log(csv_data)
+        // console.log(csv_data)
         return csv_data;
     }
+
+    // $: update(csv_war_data2022, selectedColumn)
 
 
     onMount(async () => {
         csv_war_data2023 = await fetchData('data2023/cleanedTWBP2023.csv');
         csv_war_data2022 = await fetchData('data2022/cleanedTWBP2022.csv');
+        
 
         margin = { top: 30, right: 10, bottom: 70, left: 150 },
-            width = 460 - margin.left - margin.right,
+            width = 400 - margin.left - margin.right,
             height = 400 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
@@ -40,9 +45,7 @@
 
         svg.append("text").attr("x", width/2).attr("y", -10).attr("text-anchor", "middle")
         .style("font-size", "16px")
-        .text("Wins Above Replacement for a Given Year");
-
-  
+        .text("Wins Above Avg by Position");
 
         // X axis
         x = d3.scaleLinear()
@@ -54,7 +57,8 @@
 
         svg.append('text').attr("transform", "translate(" + (width/2) + " ," + (height+40) + ")")
         .style("text-anchor", "middle")
-        .text("Wins Above Replacement (Pitching and Batting)");
+        .text("Wins Above Avg By Position");
+        
 
         // Add Y axis
         y = d3.scaleBand()
@@ -73,11 +77,11 @@
             .text("Teams");
 
         // Initialize the plot with the first dataset
-        update(csv_war_data2022);
+        update(csv_war_data2023, selectedColumn);
     });
 
     // Define the update function outside onMount
-    update = function (data) {
+    update = function (data, selectedColumn) {
     var u = svg.selectAll("rect")
         .data(data);
 
@@ -88,26 +92,40 @@
         .attr("y", function (d) { return y(d.Name); })
         .attr("x", function (d) { return x(-15); })
         .attr("height", y.bandwidth())
-        .attr("width", function (d) { return width - x(d.All_P); })
+        .attr("width", function (d) { return width - x(d[selectedColumn]); }) // Use d[selectedColumn] instead of d.All_P
         .attr("fill", "#69b3a2");
-        
     }
 </script>
 
 <main>
-    <!-- <label for="columns">Select a column:</label>
-    <select bind:value={selectedColumn} id="columns">
-        {#each Object.keys(csv_war_data2023[0]) as column}
-            <option value={column}>{column}</option>
-        {/each}
-    </select> -->
-    <button on:click={() => update(csv_war_data2022)}>2022</button>
-    <button on:click={() => update(csv_war_data2023)}>2023</button>
+    <label for="column-select">Select Column and Click Year:</label>
+    <select id="column-select" bind:value={selectedColumn}>
+        <option value="All_P">All_P</option>
+        <option value="SP">SP</option>
+        <option value="RP">RP</option>
+        <option value="Non-P">Non-P</option>
+        <option value="C">C</option>
+        <option value="1B">1B</option>
+        <option value="2B">2B</option>
+        <option value="3B">3B</option>
+        <option value="SS">SS</option>
+        <option value="LF">LF</option>
+        <option value="CF">CF</option>
+        <option value="RF">RF</option>
+        <option value="OF (All)">OF (All)</option>
+        <option value="DH">DH</option>
+        <option value="PH">PH</option>
+    </select>
+
+    <button on:click={() => update(csv_war_data2022, selectedColumn)}>2022</button>
+    <button on:click={() => update(csv_war_data2023, selectedColumn)}>2023</button>
 
     <!-- Create a div where the graph will take place -->
-    <div id="warBaseball"></div>
+    <div id="warBaseball" ></div>
 </main>
 
  <style>
+
+
 
 </style>

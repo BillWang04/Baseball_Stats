@@ -1,13 +1,16 @@
 <script>
   import ScrollyTeller from '../components/ScrollyTeller.svelte'
-  import App from '../components/App.svelte'
+  import App from '../components/WarData.svelte'
   import BaseballField from '../components/BaseballField.svelte';
+  import PitchingData from '../components/pitchingData.svelte';
+  // import SideBar from '../components/InteractiveSide.svelte'
 </script>
 
-
+<!-- <SideBar/> -->
 <ScrollyTeller/>
 <App/>
 <BaseballField/>
+
 
 <main>
   <h2>Writeup</h2>

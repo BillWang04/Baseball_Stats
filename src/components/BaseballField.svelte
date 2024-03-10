@@ -1,5 +1,5 @@
 <script>
-    import App from "./App.svelte" 
+    import App from "./WarData.svelte" 
     import * as d3 from 'd3';
     import 'd3-transition';
     import * as d3selection from 'd3-selection';
