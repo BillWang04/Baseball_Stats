@@ -136,7 +136,7 @@
     }
 
     section {
-    height: 80vh;
+    height: 200vh;
     background-color: rgba(0, 0, 0, 0.2);
     /* 20% opaque */
     /* color: white;*/

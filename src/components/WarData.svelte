@@ -98,30 +98,33 @@
 </script>
 
 <main>
-    <label for="column-select">Select Column and Click Year:</label>
-    <select id="column-select" bind:value={selectedColumn}>
-        <option value="All_P">All_P</option>
-        <option value="SP">SP</option>
-        <option value="RP">RP</option>
-        <option value="Non-P">Non-P</option>
-        <option value="C">C</option>
-        <option value="1B">1B</option>
-        <option value="2B">2B</option>
-        <option value="3B">3B</option>
-        <option value="SS">SS</option>
-        <option value="LF">LF</option>
-        <option value="CF">CF</option>
-        <option value="RF">RF</option>
-        <option value="OF (All)">OF (All)</option>
-        <option value="DH">DH</option>
-        <option value="PH">PH</option>
-    </select>
-
-    <button on:click={() => update(csv_war_data2022, selectedColumn)}>2022</button>
-    <button on:click={() => update(csv_war_data2023, selectedColumn)}>2023</button>
 
     <!-- Create a div where the graph will take place -->
     <div id="warBaseball" ></div>
+
+   
+    <div>
+        <label for="column-select">Select Column and Click Year:</label>
+        <select id="column-select" bind:value={selectedColumn}>
+            <option value="All_P">All_P</option>
+            <option value="SP">SP</option>
+            <option value="RP">RP</option>
+            <option value="Non-P">Non-P</option>
+            <option value="C">C</option>
+            <option value="1B">1B</option>
+            <option value="2B">2B</option>
+            <option value="3B">3B</option>
+            <option value="SS">SS</option>
+            <option value="LF">LF</option>
+            <option value="CF">CF</option>
+            <option value="RF">RF</option>
+            <option value="OF (All)">OF (All)</option>
+            <option value="DH">DH</option>
+            <option value="PH">PH</option>
+        </select>
+
+    </div>
+
 </main>
 
  <style>
