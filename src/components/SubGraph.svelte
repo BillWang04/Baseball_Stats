@@ -2,7 +2,9 @@
     import * as d3 from 'd3';
     import { onMount } from "svelte";
 
+    export let position;
 
+    console.log(position);
     let csv_war_data2023;
     let csv_war_data2022;
     let selectedColumn = "All_P"; 
@@ -33,7 +35,7 @@
             height = 400 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
-        weird = d3.select("#testing")
+        weird = d3.select("#"+position + "-graph")
             .append("svg")
             .attr("width", 100)
             .attr("height", 100)
@@ -96,8 +98,7 @@
         .attr("fill", "#69b3a2");
         
     } 
-
 </script>
 
-<div id="testing">
+<div id={position + "-graph"}>
 </div>

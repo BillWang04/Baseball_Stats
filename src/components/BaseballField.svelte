@@ -6,7 +6,7 @@
     import { onMount } from "svelte";
     import SubGraph from './SubGraph.svelte';
 
-    let show = 'hidden';    
+    let show = Array(9).fill("hidden");    
     let current_zoomed = false;
 
     let svg;
@@ -55,7 +55,7 @@ function zoomIn(event, item) {
     }
 
     function reset() {
-    show = 'hidden';
+    show = Array(9).fill("hidden");
       d3.select(svg).transition().duration(1500).call(
         zoom.transform,
         d3.zoomIdentity,
@@ -69,7 +69,8 @@ function zoomIn(event, item) {
       positions.on("click", (event) => {
         if (!current_zoomed && !d3.active(svg)) {
         selectedPosition = d3.select(svg).select(`#${event.target.id}`)
-        show = 'visible';
+        console.log(event.target.classList[1])
+        show[Number(event.target.classList[1])] = 'visible';
         zoomIn(event,selectedPosition)
         selectedPosition.style('visibility', 'hidden');
         }});
@@ -110,20 +111,69 @@ function zoomIn(event, item) {
         <path id="left-on-deck" d="M 235 457.5 A 12.5 12.5 0 1 1  210,457.5 A 12.5 12.5 0 1 1  235 457.5 z"/>
         <path id="right-on-deck" d="M 235 457.5 A 12.5 12.5 0 1 1  210,457.5 A 12.5 12.5 0 1 1  235 457.5 z" transform="translate(209.5,0.5)"/>
         <path id="home-dirt-border" d="M 295,405 C 295.15103,402.74278 293.1875,403.97917 292.28125,403.46875 C 280.62645,419.16193 280.35712,439.683 291.625,455.65625 C 305.77503,475.71519 333.59731,480.52502 353.65625,466.375 C 373.71519,452.22497 378.52502,424.40269 364.375,404.34375 L 361,405 C 362.65625,407.375 361,405 362.65625,407.375 L 293.875,406.53125 L 295,405 z M 293.875,406.53125 L 362.65625,407.375 C 374.80016,425.99135 370.24983,450.98832 351.9375,463.90625 C 333.20494,477.12061 307.30812,472.67006 294.09375,453.9375 C 283.82751,439.38417 283.83997,421.05606 293.875,406.53125 z "/>
+        
         <g id='group-pos-first-base' width="100" height="100"  x="394" y="265" >
-          <foreignObject id='group-pos-first-base-l' x="394" y="265" width="100" height="100" visibility={show}>
-            <SubGraph/>
+          <foreignObject id='group-pos-first-base-l' x="394" y="265" width="100" height="100" visibility={show[2]}>
+            <SubGraph position="first-base"/>
           </foreignObject>
-          <rect class="position" id="pos-first-base" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="394" y="265"/>
+          <rect class="position 2" id="pos-first-base" width="100" height="100"  x="394" y="265"/>
         </g>
-        <rect class="position" id="pos-second-base" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="342" y="150" />
-        <rect class="position" id="pos-short-stop" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="215" y="150" />
-        <rect class="position" id="pos-third-base" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="164" y="265" />
-        <rect class="position" id="pos-pitcher" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="277.5" y="265" />
-        <rect class="position" id="pos-catcher" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="277.5" y="380" />
-        <rect class="position" id="pos-center-field" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="277.5" y="10" />
-        <rect class="position" id="pos-right-field" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="450" y="50" />
-        <rect class="position" id="pos-left-field" style="stroke:yellow;fill-opacity:0" width="100" height="100"  x="100" y="50" />
+        
+        <g id='group-pos-second-base' width="100" height="100"  x="342" y="150" >
+          <foreignObject id='group-pos-second-base-l' x="342" y="150" width="100" height="100" visibility={show[3]}>
+            <SubGraph position="second-base"/>
+          </foreignObject>
+          <rect class="position 3" id="pos-second-base" width="100" height="100"  x="342" y="150" />
+        </g>
+        
+        <g id='group-pos-short-stop' width="100" height="100"  x="215" y="150" >
+          <foreignObject id='group-pos-short-stop-l' x="215" y="150" width="100" height="100" visibility={show[5]}>
+            <SubGraph position="short-stop"/>
+          </foreignObject>
+          <rect class="position 5" id="pos-short-stop" width="100" height="100"  x="215" y="150" />
+        </g>
+
+        <g id='group-pos-third-base' width="100" height="100"  x="164" y="265" >
+          <foreignObject id='group-pos-third-base-l' x="164" y="265" width="100" height="100" visibility={show[4]}>
+            <SubGraph position="third-base"/>
+          </foreignObject>
+          <rect class="position 4" id="pos-third-base" width="100" height="100"  x="164" y="265" />
+        </g>
+
+        <g id='group-pos-pitcher' width="100" height="100"  x="277.5" y="265" >
+          <foreignObject id='group-pos-pitcher-l' x="277.5" y="265" width="100" height="100" visibility={show[0]}>
+            <SubGraph position="pitcher"/>
+          </foreignObject>
+          <rect class="position 0" id="pos-pitcher" width="100" height="100"  x="277.5" y="265" />
+        </g>
+
+        <g id='group-pos-catcher' width="100" height="100"  x="277.5" y="380" >
+          <foreignObject id='group-pos-catcher-l' x="277.5" y="380" width="100" height="100" visibility={show[1]}>
+            <SubGraph position="catcher"/>
+          </foreignObject>
+          <rect class="position 1" id="pos-catcher" width="100" height="100"  x="277.5" y="380" />
+        </g>
+
+        <g id='group-pos-center-field' width="100" height="100"  x="277.5" y="10" >
+          <foreignObject id='group-pos-center-field-l' x="277.5" y="10" width="100" height="100" visibility={show[7]}>
+            <SubGraph position="center-field"/>
+          </foreignObject>
+          <rect class="position 7" id="pos-center-field" width="100" height="100"  x="277.5" y="10" />
+        </g>
+
+        <g id='group-pos-right-field' width="100" height="100"  x="450" y="50" >
+          <foreignObject id='group-pos-right-field-l' x="450" y="50" width="100" height="100" visibility={show[8]}>
+            <SubGraph position="right-field"/>
+          </foreignObject>
+          <rect class="position 8" id="pos-right-field" width="100" height="100"  x="450" y="50" />
+        </g>
+
+        <g id='group-pos-left-field' width="100" height="100"  x="100" y="50" >
+          <foreignObject id='group-pos-left-field-l' x="100" y="50" width="100" height="100" visibility={show[6]}>
+            <SubGraph position="left-field"/>
+          </foreignObject>
+          <rect class="position 6" id="pos-left-field" width="100" height="100"  x="100" y="50" />
+        </g>
   
   
   
@@ -134,6 +184,12 @@ function zoomIn(event, item) {
 
 
 <style>
+  
+    .position {
+      stroke:yellow;
+      fill-opacity:0;
+    }
+
     #pitchers-mound {
       opacity:1;
       fill:#b56700;
