@@ -96,6 +96,15 @@
         
     } 
 </script>
-
-<div id={"graph-"+position}>
+<div class = "graph-background">
+    <div id={"graph-"+position}/>
 </div>
+
+<style>
+    .graph-background {
+        height:100px;
+        width:99px;
+        background-color:lightgray;
+        border-radius:10px
+    }
+</style>
