@@ -35,7 +35,7 @@
         graphDiv = d3.select("#graph-"+position )
             .append("svg")
             .attr("width", 100)
-            .attr("height", 100)
+            .attr("height", 90)
             .attr("viewBox","0 0 460 400")
             .append("g")
             .attr("transform","translate(" + margin.left + "," + margin.top + ")")
@@ -96,6 +96,16 @@
         
     } 
 </script>
+<div>
+    <button class = "graph-button" on:click={() => update(csv_war_data2022, selectedColumn)}>2022</button>
+    <button class = "graph-button" on:click={() => update(csv_war_data2023, selectedColumn)}>2023</button>
+    <div id={"graph-"+position}>
+    </div>
 
-<div id={"graph-"+position}>
 </div>
+
+<style>
+    .graph-button {
+        z-index: 10;
+    }
+</style>
