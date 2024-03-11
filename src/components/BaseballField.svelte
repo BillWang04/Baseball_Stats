@@ -69,7 +69,6 @@ function zoomIn(event, item) {
       positions.on("click", (event) => {
         if (!current_zoomed && !d3.active(svg)) {
         selectedPosition = d3.select(svg).select(`#${event.target.id}`)
-        console.log(event.target.classList[1])
         show[Number(event.target.classList[1])] = 'visible';
         zoomIn(event,selectedPosition)
         selectedPosition.style('visibility', 'hidden');
@@ -117,63 +116,63 @@ function zoomIn(event, item) {
         
         <g id='group-pos-first-base' width="100" height="100"  x="394" y="265" >
           <foreignObject id='group-pos-first-base-l' x="394" y="265" width="100" height="100" visibility={show[2]}>
-            <SubGraph position="first-base"/>
+            <SubGraph position="1B"/>
           </foreignObject>
           <rect class="position 2" id="pos-first-base" width="100" height="100"  x="394" y="265"/>
         </g>
         
         <g id='group-pos-second-base' width="100" height="100"  x="342" y="150" >
           <foreignObject id='group-pos-second-base-l' x="342" y="150" width="100" height="100" visibility={show[3]}>
-            <SubGraph position="second-base"/>
+            <SubGraph position="2B"/>
           </foreignObject>
           <rect class="position 3" id="pos-second-base" width="100" height="100"  x="342" y="150" />
         </g>
         
         <g id='group-pos-short-stop' width="100" height="100"  x="215" y="150" >
           <foreignObject id='group-pos-short-stop-l' x="215" y="150" width="100" height="100" visibility={show[5]}>
-            <SubGraph position="short-stop"/>
+            <SubGraph position="SS"/>
           </foreignObject>
           <rect class="position 5" id="pos-short-stop" width="100" height="100"  x="215" y="150" />
         </g>
 
         <g id='group-pos-third-base' width="100" height="100"  x="164" y="265" >
           <foreignObject id='group-pos-third-base-l' x="164" y="265" width="100" height="100" visibility={show[4]}>
-            <SubGraph position="third-base"/>
+            <SubGraph position="3B"/>
           </foreignObject>
           <rect class="position 4" id="pos-third-base" width="100" height="100"  x="164" y="265" />
         </g>
 
         <g id='group-pos-pitcher' width="100" height="100"  x="277.5" y="265" >
           <foreignObject id='group-pos-pitcher-l' x="277.5" y="265" width="100" height="100" visibility={show[0]}>
-            <SubGraph position="pitcher"/>
+            <SubGraph position="All_P"/>
           </foreignObject>
           <rect class="position 0" id="pos-pitcher" width="100" height="100"  x="277.5" y="265" />
         </g>
 
         <g id='group-pos-catcher' width="100" height="100"  x="277.5" y="380" >
           <foreignObject id='group-pos-catcher-l' x="277.5" y="380" width="100" height="100" visibility={show[1]}>
-            <SubGraph position="catcher"/>
+            <SubGraph position="C"/>
           </foreignObject>
           <rect class="position 1" id="pos-catcher" width="100" height="100"  x="277.5" y="380" />
         </g>
 
         <g id='group-pos-center-field' width="100" height="100"  x="277.5" y="10" >
           <foreignObject id='group-pos-center-field-l' x="277.5" y="10" width="100" height="100" visibility={show[7]}>
-            <SubGraph position="center-field"/>
+            <SubGraph position="CF"/>
           </foreignObject>
           <rect class="position 7" id="pos-center-field" width="100" height="100"  x="277.5" y="10" />
         </g>
 
         <g id='group-pos-right-field' width="100" height="100"  x="450" y="50" >
           <foreignObject id='group-pos-right-field-l' x="450" y="50" width="100" height="100" visibility={show[8]}>
-            <SubGraph position="right-field"/>
+            <SubGraph position="RF"/>
           </foreignObject>
           <rect class="position 8" id="pos-right-field" width="100" height="100"  x="450" y="50" />
         </g>
 
         <g id='group-pos-left-field' width="100" height="100"  x="100" y="50" >
           <foreignObject id='group-pos-left-field-l' x="100" y="50" width="100" height="100" visibility={show[6]}>
-            <SubGraph position="left-field"/>
+            <SubGraph position="LF"/>
           </foreignObject>
           <rect class="position 6" id="pos-left-field" width="100" height="100"  x="100" y="50" />
         </g>

@@ -32,7 +32,7 @@
             height = 400 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
-        graphDiv = d3.select("#"+position + "-graph")
+        graphDiv = d3.select("#graph-"+position )
             .append("svg")
             .attr("width", 100)
             .attr("height", 100)
@@ -76,7 +76,7 @@
             .text("Teams");
 
         // Initialize the plot with the first dataset
-        update(csv_war_data2022);
+        update(csv_war_data2022,position);
     });
 
     // Define the update function outside onMount
@@ -91,11 +91,11 @@
         .attr("y", function (d) { return y(d.Name); })
         .attr("x", function (d) { return x(-15); })
         .attr("height", y.bandwidth())
-        .attr("width", function (d) { return width - x(d.All_P); })
+        .attr("width", function (d) { return width - x(d[position]); })
         .attr("fill", "#69b3a2");
         
     } 
 </script>
 
-<div id={position + "-graph"}>
+<div id={"graph-"+position}>
 </div>
