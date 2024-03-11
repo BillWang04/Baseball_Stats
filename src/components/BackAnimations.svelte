@@ -38,6 +38,9 @@
         <span in:fade|global={{ delay: 1000 + i * 150, duration: 2000 }}>{char}</span>
         {/each}
     </div>
+    <section class="header-down-arrow" out:fly={{ y: -20, duration: 800 }}>
+        <img src="downarrow.png" width="50">
+    </section>
     <div class = "names" out:fly={{ y: -20, duration: 800 }}>
         {#each 'Made By: Bill Wang & Ethan Cao' as char, i}
           <span in:fade|global={{ delay: 1000 + i * 30, duration: 2000 }}>{char}</span>
@@ -113,6 +116,45 @@
 </main>
 
 <style>
+    @keyframes fade-slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(4rem);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+    
+    }
+    @keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: none;
+    }
+    50% {
+        opacity: .8;
+        transform: scale(.8);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+    }
+
+    .header-down-arrow {
+        animation: pulse 2s 3s ease-out infinite;
+        position: absolute;
+        bottom: 4vh;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 10;
+    }
+    .header-down-arrow img {
+        animation: fade-slide-up 1s 1s ease-out forwards;
+        opacity: 0;
+    }
     .first {
         font-size: 10vw;
         position: absolute;
