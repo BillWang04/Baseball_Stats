@@ -77,7 +77,8 @@ function zoomIn(event, item) {
     }
 
     $: d3.select(svg).on('click',(event) => {
-      if (!d3.select(event.target).classed('position') && !d3.active(svg)) {
+      console.log(event.target)
+      if (!d3.select(event.target).classed('position') && !d3.active(svg) && !d3.select(event.target.parentNode).classed("graph-background") && !d3.select(event.target).classed("graph-background")) {
       reset()
       d3.select(svg).selectAll(".position").style('visibility', 'visible')}})
     $: d3.select(svg).on('wheel.zoom',null) 
