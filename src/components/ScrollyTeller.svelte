@@ -122,11 +122,11 @@
     /* outline: red solid 3px; */
     }
 
-    .progress-bars {
+    /* .progress-bars {
     position: absolute;
-    background: rgba(170, 51, 120, 0.2) /*  40% opaque */;
+    background: rgba(170, 51, 120, 0.2);
     visibility: hidden;
-    }
+    } */
 
     section {
     height: 200vh;
@@ -155,7 +155,7 @@
     font-family: "Lato", sans-serif;
     } */
 
-    .sidenav {
+    /* .sidenav {
     height: 100%;
     width: 0;
     position: fixed;
@@ -168,9 +168,9 @@
     padding-bottom: 30px;
     left: 0;
 
-    }
+    } */
 
-    .sidenav a {
+    /* .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -178,23 +178,23 @@
     display: block;
     transition: 0.3s;
 
-    }
+    } */
 
-    .sidenav a:hover {
+    /* .sidenav a:hover {
     color: #f1f1f1;
-    }
+    } */
 
-    .sidenav .closebtn {
+    /* .sidenav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-    }
+    } */
 
 
 
-    @media screen and (max-height: 450px) {
+    /* @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
     }
@@ -206,7 +206,7 @@
       width: 70%;
       padding: 10px;
       bottom: 10px;
-    }
+    } */
 
 
 

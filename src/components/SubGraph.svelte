@@ -97,27 +97,36 @@
     } 
 </script>
 <div class = "graph-background">
-    <button class = "graph-button" on:click={() => update(csv_war_data2022, selectedColumn)}>2022</button>
-    <button class = "graph-button" on:click={() => update(csv_war_data2023, selectedColumn)}>2023</button>
+    <div class = "button-container">
+        <button class = "graph-button" on:click={() => update(csv_war_data2022, selectedColumn)}>2022</button>
+        <button class = "graph-button" on:click={() => update(csv_war_data2023, selectedColumn)}>2023</button>
+    </div>
     <div id={"graph-"+position}>
     </div>
 
 </div>
 
-<div class = "graph-background">
-    <div id={"graph-"+position}/>
-</div>
 
 
 <style>
+    .button-container {
+        display:flex;
+        justify-content: center;
+    }
     .graph-button {
         z-index: 10;
+        width:20%;
+        height:100%;
+        font-size:15%;
     }
     .graph-background {
         height:100px;
         width:99px;
         background-color:lightgray;
-        border-radius:10px
+        border-radius:10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
     }
 </style>
 

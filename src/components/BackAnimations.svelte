@@ -39,7 +39,7 @@
         {/each}
     </div>
     <section class="header-down-arrow" out:fly={{ y: -20, duration: 800 }}>
-        <img src="downarrow.png" width="50">
+        <img src="downarrow.png" width="50" alt="Scroll Down">
     </section>
     <div class = "names" out:fly={{ y: -20, duration: 800 }}>
         {#each 'Made By: Bill Wang & Ethan Cao' as char, i}
@@ -208,12 +208,12 @@
         font-weight: 400; 
 }
 
-.first_base {
+/* .first_base {
     font-size: 2vw;
     right:25%;
     top: 60%;
     position: absolute;
-}
+} */
 
 .explanation{
     font-size: 2vw;
