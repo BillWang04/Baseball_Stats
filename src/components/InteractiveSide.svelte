@@ -230,6 +230,8 @@
             </h3>
           </div>
           <PitchingData/>
+
+
         {/if}
 
 
@@ -245,6 +247,9 @@
           <a href="#">RF (Right Field)</a>
           <a href="#">P (Pitcher)</a> -->
           <Data {index}/>
+          <p>
+            Wins Above Average (WAA) in baseball is a metric used to evaluate a player's or a team's performance relative to the league average. It provides insight into how much a player or team has contributed to winning games compared to an average player or team in a given season. WAA is an advanced statistic that aims to go beyond traditional stats and provide a more comprehensive assessment of value.
+          </p>
         <!-- </div> -->
         {/if}
         

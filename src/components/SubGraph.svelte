@@ -115,9 +115,9 @@
     }
     .graph-button {
         z-index: 10;
-        width:20%;
-        height:100%;
-        font-size:15%;
+        width:5vh;
+        height:2vh;
+        font-size:1vh;
     }
     .graph-background {
         height:100px;
