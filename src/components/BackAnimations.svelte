@@ -373,7 +373,7 @@
 }
 .field_explanation {
       position: absolute;
-      background: rgba(170, 51, 120, 0.2); /* 40% opaque */
+      background: rgba(232, 195, 216, 0.2); /* 40% opaque */
       visibility: visible;
       position: fixed;
       right: 5%; /* Adjust the left value as needed */
@@ -385,7 +385,7 @@
   }
   .text_descript {
       position: absolute;
-      background: rgba(170, 51, 120, 0.2); /* 40% opaque */
+      background: rgba(232, 195, 216, 0.2); /* 40% opaque */
       visibility: visible;
       position: fixed;
       margin-top: 15%;
