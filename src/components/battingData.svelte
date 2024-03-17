@@ -1,10 +1,15 @@
+<script  context="module">
+    import {writable} from 'svelte/store';
+    export let battingWriteable =  writable('woba'); 
+
+</script>
 <script>
     import * as d3 from 'd3';
     import { onMount } from "svelte";
     import { afterUpdate } from "svelte";
 
     let csv_batting_data;
-    let selectedColumn = "woba"; 
+    let selectedColumn = "woba";
 
     let updateHistogram;
     let svg;
@@ -145,6 +150,7 @@
 
         bars.exit().remove();
     }
+    $: battingWriteable.set(selectedColumn);
 </script>
 
 <main>
@@ -169,9 +175,19 @@
 
     <button on:click={() => updateHistogram(selectedColumn)}>Click to Update</button>
    
+   
 
 </main>
 
 <style>
+    .text_descript{
+        margin: 25px;
+        padding-top: 5px;
+        padding-right: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+
+    }
+
 
 </style>
