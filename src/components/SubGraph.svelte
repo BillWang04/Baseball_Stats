@@ -57,7 +57,7 @@
 
         graphDiv.append('text').attr("transform", "translate(" + (width/2) + " ," + (height+40) + ")")
         .style("text-anchor", "middle")
-        .text("Wins Above Replacement (Pitching and Batting)");
+        .text("Wins Above Replacement");
 
         // Add Y axis
         y = d3.scaleBand()

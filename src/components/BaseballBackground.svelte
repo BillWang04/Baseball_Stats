@@ -461,12 +461,7 @@
       stroke-opacity:1;
     }
   
-    .field-container {
-      display: flex;
-      justify-content: center;
-      background-color: #00a831;
-  
-    }
+
   
     
   </style>

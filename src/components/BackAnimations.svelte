@@ -17,11 +17,11 @@
 
 <main>
     {#if index === 0}
-    <div in:fade|global={{ delay: 1000, duration: 2000 }} out:fly={{ y: -20, duration: 800 }} class="button-container">
-        <div class="buttons">Video</div>
+    <!-- <div in:fade|global={{ delay: 1000, duration: 2000 }} out:fly={{ y: -20, duration: 800 }} class="button-container">
+        <div class="buttons" onclick="location.href='https://youtu.be/1SelsiPbrm8'">Video</div>
         <div class="buttons">Video</div >
         <div class="buttons">Video</div>
-    </div>
+    </div> -->
     <div class="first" out:fly={{ y: -20, duration: 800 }}>
         {#each 'BASEBALL' as char, i}
         <span in:fade|global={{ delay: 1000 + i * 150, duration: 800 }}>{char}</span>
@@ -316,28 +316,6 @@
         font-style:normal;
     }
 
-.button-container {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.buttons {
-   height: 7vh;
-   width: 10vw;
-   border: 2px solid #422800;
-  border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
-  background-color: #fbeee0;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 18px;
-   text-align: center;
-   border-radius: 2vh;
-   line-height: 6vh;
-   margin: 5px 15px 0px 15px
-
-}
 
 .first span {
     transition: opacity 0.8s ease-in-out; /* Adjust duration and easing as needed */

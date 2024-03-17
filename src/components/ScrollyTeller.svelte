@@ -3,6 +3,7 @@
     import Back from "./BaseballBackground.svelte";
     import Anime from "./BackAnimations.svelte";
     import SideBar from "./InteractiveSide.svelte";
+    import { fade, fly } from 'svelte/transition';
     let count, index, offset, progress;
 
 
@@ -40,7 +41,15 @@
       
       <SideBar {index}/>
 
-      <section/> <!-- 1-->
+      <section>
+        {#if index === 0}
+        <div in:fade|global={{ delay: 1000, duration: 2000 }} out:fly={{ y: -20, duration: 800 }} class="button-container">
+          <div class="buttons" onclick="location.href='./test'">Explore WAA</div>
+          <div class="buttons" onclick="location.href='./writeup'">Write-Up</div >
+          <div class="buttons" onclick="location.href='https://youtu.be/1SelsiPbrm8'">Video</div>
+        </div>
+        {/if}
+      </section> <!-- 1-->
       <section/> <!-- 2-->
       <section/> <!-- 3-->
       <section/> <!-- 4 (sidebar)-->
@@ -106,6 +115,34 @@
 
 
     <style>
+    .button-container {
+      display: flex;
+      flex-direction: row-reverse;
+      z-index: 100;
+    }
+
+    .buttons {
+      height: 7vh;
+      width: 10vw;
+      border: 2px solid #422800;
+      border-radius: 3vw;
+      box-shadow: #422800 4px 4px 0 0;
+      color: #422800;
+      background-color: #fbeee0;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 18px;
+      text-align: center;
+      border-radius: 2vh;
+      line-height: 6vh;
+      margin: 1vh 1.5vw 0px 1.5vw;
+      z-index: 100;
+      transition: background-color 0.5s; 
+    }
+
+    .buttons:hover {
+      background-color: white;
+    }
     .background {
     width: 650px; /* Set the desired width for your SVG */
     height: 500px; /* Set the desired height for your SVG */
@@ -117,7 +154,7 @@
     }
 
     .foreground {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     height: auto;
     position: relative;
@@ -134,10 +171,10 @@
     height: 200vh;
     /* background-color: rgba(0, 0, 0, 0.2); */
     /* 20% opaque */
-    /* color: white;*/
+    /* color: blue; */
     /* outline: magenta solid 3px; */
     text-align: center;
-    max-width: 1000px;
+    max-width: 150%;
     /* adjust at will */
     color: black;
     padding: 1em;

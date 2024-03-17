@@ -91,7 +91,7 @@ function zoomIn(event, item) {
 
 <div class="field-container">
   <div class="margin">
-  <button  onclick="location.href='../'">Return Home</button>
+    <div class="buttons" onclick="location.href='../'">Return Home</div>
   </div>
     <svg bind:this={svg} width="1040" height= "800"id="svg2" viewBox="0 0 650 500">
   
@@ -193,7 +193,32 @@ function zoomIn(event, item) {
 
 
 <style>
-  
+
+    .buttons {
+      height: 7vh;
+      width: 10vw;
+      border: 2px solid #422800;
+      border-radius: 3vw;
+      box-shadow: #422800 4px 4px 0 0;
+      color: #422800;
+      background-color: #fbeee0;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 18px;
+      text-align: center;
+      border-radius: 2vh;
+      line-height: 6vh;
+      margin: 1vh 1.5vw 0px 0.5vw;
+      z-index: 100;
+      transition: background-color 0.5s; 
+    }
+
+    .buttons:hover {
+      background-color: white;
+    }
+
+
+
     .position {
       stroke:yellow;
       fill-opacity:0;

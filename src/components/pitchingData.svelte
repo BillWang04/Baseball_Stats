@@ -214,13 +214,6 @@
 </main>
 
 <style>
-    .text_descript{
-    margin: 25px;
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
 
-}
 
 </style>
