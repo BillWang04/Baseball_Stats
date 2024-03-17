@@ -104,6 +104,7 @@
       }
       </script>
 
+<div class="buttons" style="margin: 0 auto;" onclick="location.href='./test'">Explore WAA</div>
 
 
       </section>
