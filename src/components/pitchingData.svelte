@@ -1,3 +1,8 @@
+<script  context="module">
+    import {writable} from 'svelte/store';
+    export let pitchingWritable =  writable('woba'); 
+</script>
+
 <script>
     import * as d3 from 'd3';
     import { onMount } from "svelte";
@@ -171,6 +176,7 @@
 
         bars.exit().remove();
     }
+    $: pitchingWritable.set(selectedColumn);
 </script>
 
 <main>
@@ -182,7 +188,7 @@
         <option value="release_speed">Release Speed</option>
         <option value="spin_rate">Spin Rate</option>
         <option value="movement_inches">Movement Inches</option>
-        <option value="alan_active_spin_pct">Alan Active Spin Percentage</option>
+        <!-- <option value="alan_active_spin_pct">Alan Active Spin Percentage</option> -->
         <option value="active_spin">Active Spin</option>
         </select>
 
@@ -203,8 +209,18 @@
     <button on:click={() => updateHistogram(csv_pitching_data,selectedColumn,pitch_type)}>Click to Update</button>
    
 
+    
+  
 </main>
 
 <style>
+    .text_descript{
+    margin: 25px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+
+}
 
 </style>

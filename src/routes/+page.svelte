@@ -1,7 +1,5 @@
 <script>
-  import ScrollyTeller from '../components/ScrollyTeller.svelte'
-  import BaseballField from '../components/BaseballField.svelte';
-  // import SideBar from '../components/InteractiveSide.svelte'
+  import ScrollyTeller from '../components/ScrollyTeller.svelte'  
 </script>
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +9,6 @@
 
 <!-- <SideBar/> -->
 <ScrollyTeller/>
-
 <main>
   <h2>Writeup</h2>
   <p>

@@ -18,18 +18,6 @@
 
 
 
-    // $: {
-    //   b1X.set(327.5, { duration: 500})
-    //   b1Y.set(205, {duration: 500})
-    // }
-    // $: {
-    //   b2X.set(210, { duration: 500})
-    //   b2Y.set(320, {duration: 500})
-    // }
-
-
-
-
 
 </script>
     
@@ -63,7 +51,21 @@
             <path id="left-on-deck" d="M 235 457.5 A 12.5 12.5 0 1 1  210,457.5 A 12.5 12.5 0 1 1  235 457.5 z"/>
             <path id="right-on-deck" d="M 235 457.5 A 12.5 12.5 0 1 1  210,457.5 A 12.5 12.5 0 1 1  235 457.5 z" transform="translate(209.5,0.5)"/>
             <path id="home-dirt-border" d="M 295,405 C 295.15103,402.74278 293.1875,403.97917 292.28125,403.46875 C 280.62645,419.16193 280.35712,439.683 291.625,455.65625 C 305.77503,475.71519 333.59731,480.52502 353.65625,466.375 C 373.71519,452.22497 378.52502,424.40269 364.375,404.34375 L 361,405 C 362.65625,407.375 361,405 362.65625,407.375 L 293.875,406.53125 L 295,405 z M 293.875,406.53125 L 362.65625,407.375 C 374.80016,425.99135 370.24983,450.98832 351.9375,463.90625 C 333.20494,477.12061 307.30812,472.67006 294.09375,453.9375 C 283.82751,439.38417 283.83997,421.05606 293.875,406.53125 z "/>
+            {#if index === 2}
+            <text x="445" y="315" text-anchor="middle" dy=".3em" fill="black" font-size="16" in:fly={{ y: -100, duration: 500 }} out:fly={{ y: -20, duration: 800 }}>First Base</text>
+            <text x="330" y="215" text-anchor="middle" dy=".3em" fill="black" font-size="16" in:fly={{ y: -100, duration: 500 }} out:fly={{ y: -20, duration: 800 }}>Second Base</text>
+            <text x="215" y="315" text-anchor="middle" dy=".3em" fill="black" font-size="16" in:fly={{ y: -100, duration: 500 }} out:fly={{ y: -20, duration: 800 }}>Third Base</text>
+            <text x="330" y="315" text-anchor="middle" dy=".3em" fill="black" font-size="16" in:fly={{ y: -100, duration: 500 }} out:fly={{ y: -20, duration: 800 }}>Pitcher's Mound</text>
+            <text x="330" y="415" text-anchor="middle" dy=".3em" fill="black" font-size="16" in:fly={{ y: -100, duration: 500 }} out:fly={{ y: -20, duration: 800 }}>HomeBase</text>
+
+      
+
+            {/if}
+
+
             {#if index === 3}
+
+
               <!-- first base -->
                 <circle cx="445" cy="315" r="25" fill="yellow" in:fly={{ y: -20, duration: 500 }} out:fly={{ y: -20, duration: 800 }}/>
                 <text x="445" y="315" text-anchor="middle" dy=".3em" fill="black" font-size="16" font-weight="bold" in:fly={{ y: -20, duration: 500 }} out:fly={{ y: -20, duration: 800 }}>1B</text>

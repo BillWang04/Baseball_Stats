@@ -2,9 +2,7 @@
     import Scroller from "@sveltejs/svelte-scroller";
     import Back from "./BaseballBackground.svelte";
     import Anime from "./BackAnimations.svelte";
-    import SideBar from "./InteractiveSide.svelte"
-    import App from './WarData.svelte'
-
+    import SideBar from "./InteractiveSide.svelte";
     let count, index, offset, progress;
 
 
@@ -42,17 +40,21 @@
       
       <SideBar {index}/>
 
-      <section/>
-      <section/>
-      <section/>
-      <section/>
-      <section/>
-      <section/>
-      <section/>
-      <section/>
-      <section/>
-      <section/>
+      <section/> <!-- 1-->
+      <section/> <!-- 2-->
+      <section/> <!-- 3-->
+      <section/> <!-- 4 (sidebar)-->
+      <section/><!-- 5-->
+      <section/><!-- 6-->
+      <section>
 
+        <!-- 3-->
+      </section>
+      <section>
+      </section>
+
+      <section/>
+      <section/>
       <section/>
       <section>
 
