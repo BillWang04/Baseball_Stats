@@ -72,7 +72,7 @@
 
     {#if index === 7}
         {#if $battingWriteable === "pa"}
-        <div class = 'text_descript'>
+        <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
                 <p>Plate Appearance Percentage is not a standard baseball statistic or metric. It's possible you might be referring to Plate Appearance (PA) or perhaps another metric or concept related to plate appearances.</p>
                 <p>Plate Appearance (PA) refers to the total number of times a batter has come to the plate in a game. This includes appearances that result in various outcomes such as hits, walks, strikeouts, sacrifices, and hit-by-pitches. It's a fundamental statistic used to evaluate a batter's performance and is often used as a denominator in calculating other statistics like batting average, on-base percentage, and slugging percentage.</p>
                 <p>If you're referring to another specific metric or concept related to plate appearances, please provide more context or clarification so I can better assist you.</p>
@@ -80,7 +80,7 @@
         </div>
         {/if}
     {#if $battingWriteable === "k_percent"}
-    <div class = 'text_descript'> 
+    <div class = 'text_descript'in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}> 
         <p>Strikeout Percentage, often abbreviated as K%, is a baseball statistic that represents the percentage of plate appearances that result in a strikeout for a batter. It is calculated by dividing the number of strikeouts by the total number of plate appearances and multiplying by 100.</p>
         <p>Strikeout Percentage is used to evaluate a batter's ability to make contact with the ball. A lower strikeout percentage indicates better bat-to-ball skills, while a higher percentage suggests a tendency to strike out frequently.</p>
         <p>While strikeouts are often considered detrimental to a hitter's performance since they result in an automatic out, some power hitters may have higher strikeout percentages due to their aggressive approach at the plate, prioritizing power over contact.</p>
@@ -88,7 +88,7 @@
         </div>
     {/if}
     {#if $battingWriteable === "bb_percent"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>Walk Percentage, often abbreviated as BB%, is a baseball statistic that represents the percentage of plate appearances that result in a walk for a batter. It is calculated by dividing the number of walks by the total number of plate appearances and multiplying by 100.</p>
         <p>Walk Percentage is used to evaluate a batter's ability to exercise patience and select pitches effectively. Batters with high walk percentages demonstrate a keen eye for the strike zone and are adept at drawing walks, which can contribute to extending innings and putting pressure on opposing pitchers.</p>
         <p>Walk Percentage is often considered a positive attribute for hitters, as it reflects their ability to reach base without putting the ball in play, thereby increasing their on-base percentage and providing opportunities for their teammates to drive them in.</p>
@@ -97,7 +97,7 @@
         </div>
     {/if}
     {#if $battingWriteable === "woba"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
             <p>wOBA stands for Weighted On-Base Average, which is a sabermetric baseball statistic used to measure a hitter's overall offensive value. It's considered one of the more comprehensive offensive metrics because it takes into account a hitter's ability to get on base and hit for power, while also adjusting for the value of different types of hits.</p>
             <p>The formula for calculating wOBA assigns specific weights to each offensive event based on its actual run value. These weights are derived from historical data to reflect the average number of runs a team can expect to score given each type of offensive outcome (single, double, triple, home run, walk, hit by pitch). Then, the formula calculates the sum of these weighted outcomes and divides it by the total number of plate appearances.</p>
             <p>In simpler terms, wOBA gives a more accurate picture of a hitter's offensive contribution than traditional statistics like batting average or on-base percentage because it considers the varying values of different offensive outcomes and weights them accordingly.</p>
@@ -106,7 +106,7 @@
     {/if}
 
     {#if $battingWriteable === "xwoba"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>xwOBA, or expected Weighted On-Base Average, is a more advanced metric derived from Statcast data in baseball. It uses launch angle, exit velocity, and, in some cases, sprint speed to calculate the expected outcome of each batted ball based on similar historical batted balls.</p>
         <p>The concept of xwOBA is similar to regular wOBA, but instead of using the actual outcomes of batted balls, it calculates the expected outcomes based on the quality of contact. For example, a ball hit with a high exit velocity and favorable launch angle would have a higher expected wOBA than a weakly hit ball.</p>
         <p>xwOBA is useful for evaluating a hitter's underlying skills, independent of factors like defense or luck. It provides insight into whether a player's hitting performance is sustainable based on the quality of contact they're making.</p>
@@ -114,7 +114,7 @@
     </div>
     {/if}
     {#if $battingWriteable === "sweet_spot_percent"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>Sweet Spot Percentage refers to the percentage of times a batter makes contact with the ball in what is considered the "sweet spot" of the bat. The sweet spot is the area on the bat where maximum energy transfer occurs upon contact with the ball, resulting in optimal batted ball outcomes.</p>
         <p>While there isn't a standardized metric for sweet spot percentage in baseball statistics, it can be inferred from metrics like exit velocity and launch angle, which are often used to assess the quality of contact a batter makes. Batters who consistently make contact in the sweet spot are more likely to generate hard-hit balls with favorable trajectories, leading to better offensive performance.</p>
         <p>Understanding a player's sweet spot percentage can provide insights into their ability to make solid contact and drive the ball effectively. However, it's important to note that the concept of sweet spot percentage may vary depending on individual hitting mechanics and preferences.</p>
@@ -122,7 +122,7 @@
         </div>
     {/if}
     {#if $battingWriteable === "barrel_batted_rate"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>The Barrel Batted Rate is calculated by dividing the number of barrels hit by a batter by their total number of batted ball events and expressing it as a percentage.</p>
         <p>This metric is particularly useful for evaluating a hitter's ability to consistently make high-quality contact. Hitters with a high Barrel Batted Rate often demonstrate strong bat speed, good plate discipline, and the ability to drive the ball effectively.</p>
         <p>Barrel Batted Rate is a valuable tool for assessing a player's offensive performance beyond traditional statistics like batting average or home runs. It provides insights into the quality of contact a hitter makes, which can be predictive of future success.</p>
@@ -131,7 +131,7 @@
     </div>
     {/if}
     {#if $battingWriteable === "hard_hit_percent"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>Hard Hit Percentage is a baseball statistic that measures the percentage of a player's batted balls that are classified as "hard-hit" based on their exit velocity off the bat.</p>
         <p>This metric is typically calculated by dividing the number of hard-hit balls by the total number of batted balls and expressing it as a percentage.</p>
         <p>Hard-hit balls are generally defined as those with an exit velocity above a certain threshold, often set at 95 miles per hour or higher. These batted balls tend to result in more favorable offensive outcomes, such as extra-base hits or higher batting averages.</p>
@@ -141,7 +141,7 @@
         </div>
     {/if}
     {#if $battingWriteable === "avg_best_speed"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>Average Speed is a metric in baseball that measures a player's speed on the basepaths or in the field. It represents the average velocity at which a player moves over a certain distance, typically expressed in miles per hour (mph) or feet per second (fps).</p>
         <p>This metric is often used to evaluate a player's overall athleticism and ability to impact the game with speed. Players with above-average speed can be more effective at stealing bases, stretching hits into extra bases, and covering ground defensively.</p>
         <p>Average Speed can be measured using various technologies, including radar guns, GPS trackers, or player tracking systems like Statcast in Major League Baseball.</p>
@@ -152,7 +152,7 @@
     {/if}  
     {#if $battingWriteable === "avg_hyper_speed"}
 
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>Average Hyper Speed is a hypothetical metric in baseball that could potentially measure a player's speed on the basepaths or in the field, with a focus on extremely fast bursts of movement.</p>
         <p>This metric would represent the average velocity at which a player executes high-speed movements over short distances, typically expressed in miles per hour (mph) or feet per second (fps).</p>
         <p>Average Hyper Speed could be particularly relevant for evaluating a player's ability to steal bases, chase down fly balls or line drives in the outfield, or make quick defensive plays in the infield.</p>
@@ -162,7 +162,7 @@
     </div>
     {/if}  
     {#if $battingWriteable === "whiff_percent"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>Whiff Percentage, often abbreviated as Whiff%, is a baseball statistic that measures the percentage of swings a batter misses on pitches thrown to them.</p>
         <p>It is calculated by dividing the total number of swings and misses by the total number of swings and expressing it as a percentage.</p>
         <p>Whiff Percentage is used to evaluate a batter's ability to make contact with the ball. A lower whiff percentage indicates better bat-to-ball skills, while a higher percentage suggests a tendency to swing and miss frequently.</p>
@@ -172,7 +172,7 @@
     </div>
     {/if}  
     {#if $battingWriteable === "swing_percent"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>Swing Percentage, also known as Swing Rate, is a baseball statistic that measures the percentage of pitches a batter swings at, out of the total number of pitches thrown to them.</p>
         <p>It is calculated by dividing the number of swings by the total number of pitches (swings + called strikes + balls) and expressing it as a percentage.</p>
         <p>Swing Percentage is used to evaluate a batter's aggressiveness at the plate. A higher swing percentage indicates a more aggressive approach, while a lower percentage suggests a more selective approach, waiting for pitches in the strike zone.</p>
@@ -187,7 +187,7 @@
 
     {#if index === 9 }
     {#if $pitchingWritable === "n_pitches"}
-    <div class = 'text_descript'>
+    <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
         <p>Number of Pitches is a baseball statistic that measures the total number of pitches thrown to a batter by a pitcher during their plate appearance.</p>
         <p>This statistic includes all pitches thrown, whether they are swung at by the batter, called strikes, balls, or pitches that are fouled off. It provides insights into the length and depth of a batter's plate appearance and the workload placed on the pitcher.</p>
         <p>Number of Pitches can be influenced by various factors, including the batter's plate discipline, the pitcher's strategy, the count, and the game situation. Longer plate appearances with a higher number of pitches can be indicative of a batter's ability to work deep into counts, tire out the pitcher, and potentially draw walks or make solid contact.</p>
@@ -197,7 +197,7 @@
     </div>
    {/if}
    {#if $pitchingWritable === "release_speed"}
-   <div class = 'text_descript'> 
+   <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}> 
     <p>Release Speed in pitching refers to the velocity at which a pitcher releases the ball during their pitching motion.</p>
     <p>This metric is typically measured in miles per hour (mph) and provides valuable information about the pitcher's fastball velocity or the speed of their off-speed pitches such as curveballs, sliders, or changeups.</p>
     <p>Release Speed is a crucial aspect of a pitcher's arsenal as it directly impacts the effectiveness of their pitches. A faster release speed generally translates to a faster pitch, making it more challenging for batters to react and make solid contact.</p>
@@ -207,7 +207,7 @@
     </div>
    {/if}
    {#if $pitchingWritable === "spin_rate"}
-   <div class = 'text_descript'>
+   <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
     <p>Spin Rate in pitching refers to the rate at which a baseball spins when thrown by a pitcher, measured in revolutions per minute (RPM).</p>
     <p>This metric provides insights into the movement and effectiveness of a pitcher's pitches. Higher spin rates generally result in more movement and deception, making pitches harder for batters to track and hit.</p>
     <p>Spin Rate is particularly important for breaking balls such as curveballs and sliders, as well as for off-speed pitches like changeups. For fastballs, spin rate can influence the pitch's perceived velocity and movement, affecting its effectiveness.</p>
@@ -218,7 +218,7 @@
     </div>
    {/if}
    {#if $pitchingWritable === "movement_inches"}
-   <div class = 'text_descript'>
+   <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
     <p>Movement Inches in pitching refers to the distance in inches that a pitch deviates from its expected trajectory as it approaches home plate.</p>
     <p>This metric provides insights into the movement and deception of a pitcher's pitches. It measures the horizontal and vertical displacement of the pitch relative to its initial release point and expected path.</p>
     <p>Positive movement inches indicate movement away from the pitcher's arm side, while negative movement inches indicate movement toward the arm side.</p>
@@ -230,7 +230,7 @@
    {/if}
 
    {#if $pitchingWritable === "active_spin"}
-   <div class = 'text_descript'>
+   <div class = 'text_descript' in:fade|global={{ duration: 800 }} out:fly={{ y: -20, duration: 800 }}>
     <p>Active Spin Percentage is a baseball metric that measures the percentage of a pitch's spin that contributes to its movement, independent of its velocity.</p>
     <p>This metric is particularly relevant for analyzing breaking balls such as curveballs and sliders, where the spin of the ball influences its trajectory and movement as it approaches home plate.</p>
     <p>Active Spin Percentage helps assess the quality and effectiveness of a pitcher's breaking pitches. A higher active spin percentage indicates that a greater portion of the spin is contributing to the pitch's movement, making it more deceptive and challenging for hitters to track and hit.</p>
@@ -394,6 +394,7 @@
       width: 50%; /* Adjust this value to your desired width */
       padding: 10px; /* Add some padding for spacing between the content and the div's edges */
       box-sizing: border-box; 
+      font-size: 24;
   }
   
 
