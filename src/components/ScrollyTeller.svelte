@@ -55,56 +55,59 @@
       <section/> <!-- 4 (sidebar)-->
       <section/><!-- 5-->
       <section/><!-- 6-->
-      <section>
-
-        <!-- 3-->
-      </section>
-      <section>
-      </section>
-
-      <section/>
-      <section/>
-      <section/>
+      <section> <!-- 7--></section>
+      <section></section> <!-- 8-->
+      <section/><!-- 9-->
+      <section/><!-- 10-->
+      <section/><!-- 11-->
       <section>
 
 
-      <button onclick="playBall()">Play Ball!</button>
-      <div id="output_game"></div>
+          <button onclick="playBall()">Play Ball!</button>
+          <div id="output_game"></div>
 
-      <script>
-      function playBall() {
-          const outputElement = document.getElementById('output_game');
-          outputElement.innerHTML = ''; // Clear previous output
+          <script>
+          function playBall() {
+              const outputElement = document.getElementById('output_game');
+              outputElement.innerHTML = ''; // Clear previous output
 
-          // Simulate a baseball game
-          const innings = 9;
-          let homeScore = 0;
-          let awayScore = 0;
+              // Simulate a baseball game
+              const innings = 9;
+              let homeScore = 0;
+              let awayScore = 0;
 
-          for (let inning = 1; inning <= innings; inning++) {
-              const homeRuns = Math.floor(Math.random() * 4);
-              const awayRuns = Math.floor(Math.random() * 4);
+              for (let inning = 1; inning <= innings; inning++) {
+                  const homeRuns = Math.floor(Math.random() * 4);
+                  const awayRuns = Math.floor(Math.random() * 4);
 
-              homeScore += homeRuns;
-              awayScore += awayRuns;
+                  homeScore += homeRuns;
+                  awayScore += awayRuns;
 
-              outputElement.innerHTML += `Inning ${inning}: Home ${homeRuns} - ${awayRuns} Away<br>`;
+                  outputElement.innerHTML += `Inning ${inning}: Home ${homeRuns} - ${awayRuns} Away<br>`;
+              }
+
+              outputElement.innerHTML += '<strong>Final Score:</strong><br>';
+              outputElement.innerHTML += `Home: ${homeScore} - Away: ${awayScore}<br>`;
+
+              if (homeScore > awayScore) {
+                  outputElement.innerHTML += '<strong>Home team wins!</strong>';
+              } else if (awayScore > homeScore) {
+                  outputElement.innerHTML += '<strong>Away team wins!</strong>';
+              } else {
+                  outputElement.innerHTML += '<strong>It\'s a tie!</strong>';
+              }
           }
+          </script>
 
-          outputElement.innerHTML += '<strong>Final Score:</strong><br>';
-          outputElement.innerHTML += `Home: ${homeScore} - Away: ${awayScore}<br>`;
+        <div class = "text_descript">
+          <p>
+            After exploring our project, we hope that you have a better understanding of how baseball and its statistics work. Our project was tailor-made to help beginners understand how baseball works in an interactive way. Now, use your knowledge to analyze the graphs in our Explore WAA section. Click on the yellow boxes to zoom in and interact with the graphs. Then click on the field to zoom out. Have fun! 
+          </p>
 
-          if (homeScore > awayScore) {
-              outputElement.innerHTML += '<strong>Home team wins!</strong>';
-          } else if (awayScore > homeScore) {
-              outputElement.innerHTML += '<strong>Away team wins!</strong>';
-          } else {
-              outputElement.innerHTML += '<strong>It\'s a tie!</strong>';
-          }
-      }
-      </script>
+        </div>
 
-<div class="buttons" style="margin: 0 auto;" onclick="location.href='./test'">Explore WAA</div>
+
+        <div class="buttons" style="margin: 0 auto;" onclick="location.href='./test'">Explore WAA</div>
 
 
       </section>
@@ -181,81 +184,17 @@
     padding: 1em;
     margin: 0 0 2em 0;
     }
-    /* body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    }
-    #output {
-    font-family: monospace;
-    }
-    body {
-    font-family: "Lato", sans-serif;
-    } */
-
-    /* .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    background-color: #A9A9A9;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    left: 0;
-
-    } */
-
-    /* .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-      color: #222020;
-    display: block;
-    transition: 0.3s;
-
-    } */
-
-    /* .sidenav a:hover {
-    color: #f1f1f1;
-    } */
-
-    /* .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    } */
-
-
-
-    /* @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-    }
-
-    .sidenav_text{
-      color:  #211f1f;
-      height: 100%;
-      margin: auto;
-      width: 70%;
-      padding: 10px;
-      bottom: 10px;
-    } */
-
-
-
-
-
-
-
-
-
-
+    .text_descript {
+      background: rgba(232, 195, 216, 0.2); /* 40% opaque */
+      visibility: visible;
+      /* margin-top: 15%; */
+      margin-left: 25%;
+      z-index: 1; /* Ensure the div appears on top of other elements */
+      width: 50%; /*Adjust this value to your desired width */
+      padding: 10px; /* Add some padding for spacing between the content and the div's edges */
+      box-sizing: border-box; 
+      font-size: 24;
+  }
+  
     </style>
 

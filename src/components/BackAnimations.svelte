@@ -390,7 +390,7 @@
       box-sizing: border-box; 
   }
   .text_descript {
-      position: absolute;
+        position: absolute;
       background: rgba(232, 195, 216, 0.2); /* 40% opaque */
       visibility: visible;
       position: fixed;
